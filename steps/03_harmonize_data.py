@@ -260,17 +260,7 @@ pipeline = [
     ),
 ]
 
-conn = {
-    "account": "AFDEAPY-WG37175",
-    "user": "Sai_Purushoth_G",
-    "password": "Welcomepresidio2025",
-    "role": "ACCOUNTADMIN",
-    "warehouse": "QUICKSTART_WH",
-    "database": "QUICKSTART_COMMON",
-    "schema": "PUBLIC",
-}
-session = Session.builder.configs(conn).create()
-root = Root(session)
+
 
 # entry point for PythonAPI
 root = Root(Session.builder.getOrCreate())
