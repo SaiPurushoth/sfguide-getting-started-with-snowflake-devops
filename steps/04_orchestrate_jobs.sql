@@ -13,7 +13,6 @@ create or alter table vacation_spots (
   , avg_cloud_cover_pct float
   , precipitation_probability_pct float
   -- STEP 5: INSERT CHANGES HERE
-
 ) data_retention_time_in_days = 1;
 
 
@@ -71,7 +70,7 @@ create or alter task email_notification
       if (:options = '[]') then
         CALL SYSTEM$SEND_EMAIL(
             'email_integration',
-            'saipurushothg@presidio.com', -- INSERT YOUR EMAIL HERE
+            '<insert your email here>', -- INSERT YOUR EMAIL HERE
             'New data successfully processed: No suitable vacation spots found.',
             'The query did not return any results. Consider adjusting your filters.');
       end if;
@@ -84,14 +83,14 @@ create or alter task email_notification
 
       CALL SYSTEM$SEND_EMAIL(
         'email_integration',
-        'saipurushothg@presidio.com', -- INSERT YOUR EMAIL HERE
+        '<insert your email here>', -- INSERT YOUR EMAIL HERE
         'New data successfully processed: The perfect place for your summer vacation has been found.',
         :response);
     exception
         when EXPRESSION_ERROR then
             CALL SYSTEM$SEND_EMAIL(
             'email_integration',
-            'saipurushothg@presidio.com', -- INSERT YOUR EMAIL HERE
+            '<insert your email here>', -- INSERT YOUR EMAIL HERE
             'New data successfully processed: Cortex LLM function inaccessible.',
             'It appears that the Cortex LLM functions are not available in your region');
     end;
